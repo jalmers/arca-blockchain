@@ -38,6 +38,25 @@ func (t *SimpleChaincode) Init(stub *shim.ChaincodeStub, function string, args [
 
     fmt.Println(customer_id,device_id,trx_type,trx_total)
 
+    err = stub.PutState(customer_id, []byte(customer_id))
+    if err != nil {
+        return nil, err
+    }
+
+    err = stub.PutState(device_id, []byte(device_id))
+    if err != nil {
+        return nil, err
+    }
+
+    err = stub.PutState(trx_type, []byte(trx_type))
+    if err != nil {
+        return nil, err
+    }
+
+    err = stub.PutState(trx_total, []byte(trx_total))
+    if err != nil {
+        return nil, err
+    }
     return nil, nil        
 }
 
